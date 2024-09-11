@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { catchError, Observable } from 'rxjs';
+import { HttpClient } from  '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro-screen',
@@ -36,13 +38,23 @@ export class CadastroScreenComponent implements OnInit {
     {value:  'Venda Nova', viewValue:  'Venda Nova'}
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   salvarDados(e:any){
-    e
+    this.postGeneric().subscribe(element=>{
+      console.log(element)
+    })
+  }
+
+  postGeneric(): Observable<any> {
+    const obj = {
+      tipo_imovel: this.formularioVenda.get('type')?.value,
+      nome_proprietario: this.formularioVenda.get('type')?.value,
+    }
+    return this.http.post<any>(`url/student`,obj)
   }
 
 }
