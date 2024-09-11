@@ -1,0 +1,33 @@
+.formWrapper{
+    padding: 16px;
+    margin: 16px;
+    background: white;
+    border-radius: 25px;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    display: none;
+  }
+  .tamanhoInput10{
+    width: 10%;
+  }
+  .tamanhoInput18{
+    width: 18%;
+  }
+  ::ng-deep .mat-form-field-suffix {
+    top: 0!important;
+  }
+  ::ng-deep .mat-form-field-prefix {
+    top: 0!important;
+  } 

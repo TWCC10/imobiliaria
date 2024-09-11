@@ -1,0 +1,96 @@
+<div class="formWrapper">
+    <h2>Cadastro de {{formularioVenda.get('type')?.value}}</h2>
+    <form [formGroup]="formularioVenda" class="example-form">
+        
+        
+        <mat-radio-group formControlName="type" style="flex-basis:50%">
+            <mat-radio-button value="Casa">Casa</mat-radio-button>
+            <mat-radio-button value="Apartamento">Apartamento</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-slide-toggle  style="flex-basis:48%" formControlName="closetInbuted">Armário Imbutido</mat-slide-toggle>
+    
+    
+        <mat-form-field class="name" appearance="outline">
+            <mat-label>Nome do Propietário</mat-label>
+            <input type="text" matInput formControlName="name"
+            placeholder="Ex. Nome Nomeado Nomeando">
+        </mat-form-field> 
+
+        <mat-form-field appearance="outline">
+            <mat-label>Endereço</mat-label>
+            <input type="text" matInput formControlName="adress"
+            placeholder="Ex. Rua da Rua Rua">
+        </mat-form-field> 
+
+        <mat-form-field appearance="outline">
+            <mat-label>N.</mat-label>
+            <input type="number" matInput formControlName="houseNumber"
+            placeholder="Ex. 1234">
+        </mat-form-field> 
+
+        <mat-form-field appearance="outline" *ngIf="formularioVenda.get('type')?.value === 'Apartamento'">
+            <mat-label>Andar</mat-label>
+            <input type="number" matInput formControlName="floorNumber"
+            placeholder="Ex. 103">
+        </mat-form-field> 
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <mat-select placeholder="Ex. Barreiro">
+                <mat-option *ngFor="let element of optionsBairro" [value]="element.value">{{element.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+        <mat-form-field appearance="outline">
+            <mat-label>Quantidade de Quartos</mat-label>
+            <input type="number" matInput formControlName="roomQuantity"
+            placeholder="Ex. 2" min="0" >
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline">
+            <mat-label>Quantidade de Suítes</mat-label>
+            <input type="number" matInput formControlName="suiteQuantity"
+            placeholder="Ex. 2" min="0" >
+        </mat-form-field>  
+
+        <mat-form-field class="tamanhoInput18" appearance="outline">
+            <mat-label>Quantidade de Salas</mat-label>
+            <input type="number" matInput formControlName="salasQuantity"
+            placeholder="Ex. 2" min="0" >
+        </mat-form-field>  
+
+        <mat-form-field class="tamanhoInput18" appearance="outline" *ngIf="formularioVenda.get('type')?.value === 'Apartamento'">
+            <mat-label>Quantidade de Salas de Jantar</mat-label>
+            <input type="number" matInput formControlName="dinnerQuantity"
+            placeholder="Ex. 2" min="0" >
+        </mat-form-field>  
+
+        <mat-form-field class="tamanhoInput10" appearance="outline">
+            <mat-label>Vagas</mat-label>
+            <input type="number" matInput formControlName="parkingSpots"
+            placeholder="Ex. 2" min="0" >
+        </mat-form-field>  
+
+        <mat-form-field  floatLabel="always" class="tamanhoInput10" appearance="outline">
+            <mat-label>Tamanho</mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" formControlName="parkingSpots"/>
+            <div matSuffix>m²</div>
+          </mat-form-field>
+        
+        <mat-form-field  floatLabel="always" appearance="outline" *ngIf="formularioVenda.get('type')?.value === 'Apartamento'" >
+            <mat-label>Condominio</mat-label>
+            <input matInput type="number" placeholder="0" formControlName="societyCost"/>
+            <span matPrefix>R$</span>
+        </mat-form-field>
+
+        <mat-form-field  appearance="outline">
+            <mat-label >Descrição</mat-label>
+            <input matInput type="text" placeholder="Ex. Imóvel belo, bem ventilado ..." formControlName="description"/>
+        </mat-form-field>
+    </form>
+          <button mat-flat-button (click)="salvarDados($event)">Salvar</button>
+          <button mat-flat-button disabled>Disabled</button>
+
+        
+</div>
